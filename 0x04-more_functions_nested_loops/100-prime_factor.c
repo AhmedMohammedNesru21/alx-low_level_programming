@@ -1,30 +1,26 @@
-#include "main.h"
+#include <stdio.h>
 
 /**
- * print_triangle - function that prints a square, followed by a new line
- * @size: size of triangle
- * Return: nothing.
+ * main - finds and prints the largest prime factor of the number
+ * 612852475143
+ * Return: 0.
  */
 
-void print_triangle(int size)
+int main(void)
 {
-	int row, col, aux;
+	long num = 612852475143;
+	long divisor = 2;
+	long larg_prim = 0;
 
-	if (size > 0)
+	while (num != 1)
 	{
-		for (row = 0; row < size; row++)
+		if (num % divisor == 0)
 		{
-			for (col = 0; col < size; col++)
-			{
-				aux = (size - row) - 1;
-				if (col < aux)
-					_putchar(' ');
-				else
-					_putchar(35);
-			}
-			_putchar('\n');
+			num = num / divisor;
+			larg_prim = divisor;
 		}
+		divisor += 1;
 	}
-	else
-		_putchar('\n');
+	printf("%ld\n", larg_prim);
+	return (0);
 }
