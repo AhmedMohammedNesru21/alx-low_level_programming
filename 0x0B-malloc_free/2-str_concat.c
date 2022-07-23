@@ -1,33 +1,32 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
-
-char *str_concat(char *s1, char *s2)
+/**
+ * _strdup - check the code for Alx School students.
+ * @str: argument for array
+ * Return: Always 0.
+ */
+char *_strdup(char *str)
 {
-  int i, j, k;
-  char *newStr = NULL;
+	char *my_array;
+	int i, len;
 
-  if (s1 == NULL)
-    s1 = "";
-  if (s2 == NULL)
-    s2 = "";
+	my_array = malloc(sizeof(str));
 
-  for (i = 0; s1[i] != '\0'; i++)
-    ;
+	i = len = 0;
+	while (str[i] != '\0')
+	{
+		len++;
+		i++;
+	}
 
-  for (j = 0; s2[j] != '\0'; j++)
-    ;
+	if (my_array == NULL)
+		return (NULL);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		my_array[i] = str[i];
+		i++;
+	}
 
-  newStr = (char*)malloc((i + j) * sizeof(char));
-
-  if (newStr == NULL)
-    return (NULL);
-
-  for (k = 0; s1[k] != '\0'; k++)
-    newStr[k] = s1[k];
-
-  for (k = 0; s2[k] != '\0'; k++)
-    newStr[k + i] = s2[k];
-
-  return (newStr);
+	return (my_array);
 }
