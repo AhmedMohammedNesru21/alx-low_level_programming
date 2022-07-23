@@ -1,32 +1,37 @@
 #include "main.h"
 #include <stdlib.h>
 /**
- * _strdup - check the code for Alx School students.
- * @str: argument for array
+ * str_concat - function that concatenates two strings
+ * @s1: paramater for string 1
+ * @s2: parameter for string 2
  * Return: Always 0.
  */
-char *_strdup(char *str)
+char *str_concat(char *s1, char *s2)
 {
+	int a, b, c;
 	char *my_array;
-	int i, len;
 
-	my_array = malloc(sizeof(str));
-
-	i = len = 0;
-	while (str[i] != '\0')
-	{
-		len++;
-		i++;
-	}
+	c = 0;
+	my_array = malloc(sizeof(*s1 + *s2));
 
 	if (my_array == NULL)
 		return (NULL);
-	i = 0;
-	while (str[i] != '\0')
+
+	a = 0;
+	while (s1[a] != '\0')
 	{
-		my_array[i] = str[i];
-		i++;
+		my_array[c] = s1[a];
+		a++;
+		c++;
+	}
+	b = 0;
+	while (s2[b] != '\0')
+	{
+		my_array[c] = s2[b];
+		b++;
+		c++;
 	}
 
 	return (my_array);
+	free(my_array);
 }
