@@ -10,21 +10,21 @@
  */
 int number(char *str)
 {
-        int a; 
-		int num = 0;
+			int a;
+			int num = 0;
 
-        for (a = 0; str[a] != '\0'; a++)
-        {
+			for (a = 0; str[a] != '\0'; a++)
+			{
                 if (*str == ' ')
                         str++;
                 else
-                {
-                        for (; str[a] != ' ' && str[a] != '\0'; a++)
-                                str++;
-                        num++;
-                }
-        }
-        return (num);
+				{
+					for (; str[a] != ' ' && str[a] != '\0'; a++)
+								str++;
+					num++;
+				}
+			}
+			return (num);
 }
 /**
  * free_everything - frees the memory
