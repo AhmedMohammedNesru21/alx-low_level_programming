@@ -58,7 +58,7 @@ char **strtow(char *str)
 	for (; *str != '\0' &&  b < total_words;)
 	{
 		if (*str == ' ')
-            str++;
+			str++;
 		else
 		{
 			found_word = str;
@@ -72,7 +72,7 @@ char **strtow(char *str)
 				free_everything(words, b);
 				return (NULL);
 			}
-			for (; *found_word != ' ' && *found_word != '\0'; found_word++ , c++)
+			for (; *found_word != ' ' && *found_word != '\0'; found_word++,c++)
 			{
 				words[b][c] = *found_word;
 			}
