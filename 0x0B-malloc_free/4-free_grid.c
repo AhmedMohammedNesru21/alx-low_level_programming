@@ -1,16 +1,27 @@
 #include "main.h"
 #include <stdlib.h>
+
 /**
- * free_grid - function that concatenates two strings
- * @grid: parmater for grid
- * @height: parameter for height
- * Return: Always 0.
- */
+  * free_grid - ...
+  * @grid: ...
+  * @height: ...
+  *
+  * Return: ...
+  */
 void free_grid(int **grid, int height)
 {
-	int i;
+	int i, j;
 
 	for (i = 0; i < height; i++)
-		free(grid[i]);
-	free(grid);
+	{
+		if (grid[i] == NULL)
+		{
+			for (j = i; j >= 0; j--)
+			{
+				free(grid[j]);
+			}
+
+			free(grid);
+		}
+	}
 }
