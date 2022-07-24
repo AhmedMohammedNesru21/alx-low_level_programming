@@ -43,43 +43,45 @@ void free_everything(char **string, int i)
  * @str: string being passed
  * Return: null if string is empty or null or function fails
  */
-char **strtow(char *str, char delim)
+char **strtow(char *str)
 {
-	int i, j, k, h, c, len;
-	char **words;
-	if (str == NULL || str[0] == '\0')
+	int total_words = 0, b = 0, c = 0, length = 0;
+	char **words, *found_word;
+
+	if (str == 0 || *str == 0)
 		return (NULL);
-	c = count_words(str, delim);
-	if (c == 0)
+	total_words = number(str);
+	if (total_words == 0)
 		return (NULL);
-	words = malloc(sizeof(char *) * (c + 1));
-	if (words == NULL)
+	words = malloc((total_words + 1) * sizeof(char *));
+	if (words == 0)
 		return (NULL);
-	i = 0; /* counts through entire string */
-	j = 0; /* counts through each word in string */
-	while (str[i] != '\0')
+	for (; *str != '\0' &&  b < total_words;)
 	{
-		while (str[i] == delim && str[i] != '\0')
-			i++;
-		if (str[i] == '\0')
+		if (*str == ' ') str++;
+		else
 		{
-			words[j] = NULL;
-			return (words);
+			found_word = str;
+			for (; *str != ' ' && *str != '\0'; length++)
+			{
+				str++;
+			}
+			words[b] = malloc((length + 1) * sizeof(char));
+			if (words[b] == 0)
+			{
+				free_everything(words, b);
+				return (NULL);
+			}
+			for (;*found_word != ' ' && *found_word != '\0'; found_word++ , c++)
+			{
+				words[b][c] = *found_word;
+			}
+			words[b][c] = '\0';
+			b++;
+			c = 0;
+			length = 0;
+			str++;
 		}
-		words[j] = malloc(sizeof(char) * _wrdlen(str + i, delim) + 1);
-		if (words[j] == NULL)
-		{
-			for (k = j - 1; k >= 0; k--)
-				free(words[k]);
-			free(words);
-			return (NULL);
-		}
-		len = _wrdlen(str + i, delim);
-		for (h = 0; h < len && str[i] != '\0'; h++, i++)
-			words[j][h] = str[i];
-		words[j][h] = '\0';
-		j++;
 	}
-	words[j] = NULL;
 	return (words);
 }
