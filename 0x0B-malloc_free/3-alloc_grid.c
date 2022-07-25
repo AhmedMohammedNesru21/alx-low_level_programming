@@ -1,27 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "main.h"
 /**
- * array_range - create anarray of integers (min to max)
- * @min: min number to start
- * @max: max number to start
- * Return: pointer
+ * alloc_grid - nested loop to make grid
+ * @width: width input
+ * @height: height input
+ * Return: pointer to 2 dim. array
  */
-
-int *array_range(int min, int max)
+int **alloc_grid(int width, int height)
 {
-  int *ptr;
-  int diff, i;
+	int **iarray;
+	int i, n;
 
-  if (min > max)
-    return (NULL);
-  diff = max - min;
-  ptr = malloc((diff + 1) * sizeof(int));
-  if (ptr == NULL)
-    return (NULL);
-  for (i = 0; i <= diff; min++, i++)
-    {
-      ptr[i] = min;
-    }
-  return (ptr);
+	if (width <= 0 || height <= 0)
+		return (NULL);
+
+	iarray = malloc(sizeof(int) * height);
+
+	if (iarray == NULL)
+	{
+		free(iarray);
+		return (NULL);
+	}
+
+	for (i = 0; i < height; i++)
+	{
+		iarray[i] = malloc(sizeof(int) * width);
+		if (iarray == NULL)
+		{
+			free(iarray);
+			return (NULL);
+		}
+
+		for (n = 0; n < width; n++)
+		{
+			iarray[i][n] = 0;
+		}
+	}
+	return (iarray);
 }
