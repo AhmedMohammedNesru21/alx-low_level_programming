@@ -40,29 +40,3 @@ int _atoi(char *s)
 	}
 	return (result);
 }
-/**
-  * main - main function call
-  * @argc: argument count
-  * @argv: 2D array of arguments
-  * Return: return 0 on success, 98 on failure
-  */
-int main(int argc, char *argv[])
-{
-	int i;
-
-	malloc();
-	if (argc != 3)
-	{
-		printf("Error\n");
-		exit(98);
-	}
-	for (i = 1; i < argc; i++)
-	{
-		if (_isdigit(argv[i]))
-		{
-			printf("Error\n");
-			exit(98);
-		}
-	}
-	return (0);
-}
