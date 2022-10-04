@@ -1,3 +1,3 @@
 #!/bin/bash
-gcc -Wall -Wextra -Werror -pedantic -c *.c
-ar rc libdynamic.so *.o
+gcc -Wall -fPIC -c *.c
+gcc -shared -Wl,-soname,liball.so -o liball.so *.o
